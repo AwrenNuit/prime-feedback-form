@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 class ThankYou extends Component{
 
   reset = ()=>{
+    this.props.dispatch({type: `SEND_RESET`});
     this.props.history.push('/');
   }
 

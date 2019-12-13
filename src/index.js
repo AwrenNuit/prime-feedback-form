@@ -7,16 +7,28 @@ import {combineReducers, createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import logger from 'redux-logger';
 
-const REDUCER = (state=[], action) => {
-  if (action.type === 'ORDER_PIZZA'){
+const surveyReducer = (state=[], action) => {
+  if (action.type === 'SEND_FEELINGS'){
       return action.payload
+  }
+  else if(action.type === 'SEND_UNDERSTANDING'){
+    return [...state, action.payload];
+  }
+  else if(action.type === 'SEND_SUPPORT'){
+    return [...state, action.payload];
+  }
+  else if(action.type === 'SEND_COMMENTS'){
+    return [...state, action.payload];
+  }
+  else if(action.type === 'SEND_RESET'){
+    return [];
   }
   return state;
 }
 
 const storeInstance = createStore(
   combineReducers({
-      REDUCER
+      surveyReducer,
   }),
   applyMiddleware(logger)
 )
