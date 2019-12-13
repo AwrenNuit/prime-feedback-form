@@ -12,8 +12,13 @@ class FeelingForm extends Component{
   }
 
   nextPage = ()=>{
-    this.props.dispatch({type: `SEND_FEELINGS`, payload: this.state.feeling});
-    this.props.history.push(`/understanding`);
+    if(this.state.feeling !== 0){
+      this.props.dispatch({type: `SEND_FEELINGS`, payload: this.state.feeling});
+      this.props.history.push(`/understanding`);
+    }
+    else{
+      alert(`You forgot to select a value!`);
+    }
   }
 
   render(){
@@ -22,11 +27,13 @@ class FeelingForm extends Component{
         <h2>How are you feeling today?</h2>
         <p><span>Stressed</span> <span>Calm</span></p>
         {JSON.stringify(this.props)}
-        <span><input type="radio" name="feeling" id="1" value="1" checked={this.state.type === 1} onChange={(event)=>this.handleChange(event)} /></span>
-        <span><input type="radio" name="feeling" id="2" value="2" checked={this.state.type === 2} onChange={(event)=>this.handleChange(event)} /></span>
-        <span><input type="radio" name="feeling" id="3" value="3" checked={this.state.type === 3} onChange={(event)=>this.handleChange(event)} /></span>
-        <span><input type="radio" name="feeling" id="4" value="4" checked={this.state.type === 4} onChange={(event)=>this.handleChange(event)} /></span>
-        <span><input type="radio" name="feeling" id="5" value="5" checked={this.state.type === 5} onChange={(event)=>this.handleChange(event)} /></span>
+        {JSON.stringify(this.state.type)}
+        
+        <span><input type="radio" name="feeling" id="1" value="1" checked={this.state.feeling === '1'} onChange={(event)=>this.handleChange(event)} /></span>
+        <span><input type="radio" name="feeling" id="2" value="2" checked={this.state.feeling === '2'} onChange={(event)=>this.handleChange(event)} /></span>
+        <span><input type="radio" name="feeling" id="3" value="3" checked={this.state.feeling === '3'} onChange={(event)=>this.handleChange(event)} /></span>
+        <span><input type="radio" name="feeling" id="4" value="4" checked={this.state.feeling === '4'} onChange={(event)=>this.handleChange(event)} /></span>
+        <span><input type="radio" name="feeling" id="5" value="5" checked={this.state.feeling === '5'} onChange={(event)=>this.handleChange(event)} /></span>
         {/* <input type="radio" name="type" value={'Pickup'} checked={this.state.type === 'Pickup'} onChange={(event)=>this.handleChange(event, 'type')}  /><span>Pickup</span> */}
 
         <button onClick={this.nextPage}>NEXT</button>
