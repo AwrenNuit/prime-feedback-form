@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import './App.css';
-import {HashRouter as Router, Route, Link} from 'react-router-dom';
+import {HashRouter as Router, Route} from 'react-router-dom';
 import Header from '../Header/Header';
+import Welcome from '../Welcome/Welcome';
 import FeelingForm from '../FeelingForm/FeelingForm';
 import UnderstandingForm from '../UnderstandingForm/UnderstandingForm';
 import SupportedForm from '../SupportedForm/SupportedForm';
@@ -14,8 +14,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Header />
         <Router>
-          <Route exact path="/" component={Header} />
+          <Route exact path="/" component={Welcome} />
           <Route path="/feeling" component={FeelingForm} />
           <Route path="/understanding" component={UnderstandingForm} />
           <Route path="/supported" component={SupportedForm} />
