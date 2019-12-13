@@ -8,6 +8,7 @@ import UnderstandingForm from '../UnderstandingForm/UnderstandingForm';
 import SupportedForm from '../SupportedForm/SupportedForm';
 import CommentForm from '../CommentForm/CommentForm';
 import ReviewFeedback from '../ReviewFeedback/ReviewFeedback';
+import ThankYou from '../ThankYou/ThankYou';
 
 class App extends Component {
   render() {
@@ -20,6 +21,7 @@ class App extends Component {
           <Route path="/supported" component={SupportedForm} />
           <Route path="/comments" component={CommentForm} />
           <Route path="/review" component={ReviewFeedback} />
+          <Route path="/thanks" component={ThankYou} />
         </Router>
       </div>
     );
