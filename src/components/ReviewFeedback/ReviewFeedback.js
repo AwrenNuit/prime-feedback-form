@@ -5,7 +5,20 @@ import Axios from 'axios';
 class ReviewFeedback extends Component{
 
   nextPage = ()=>{
-    Axios.post
+    let feedback = {
+      feeling: this.props.reduxState[0],
+      understanding: this.props.reduxState[1],
+      support: this.props.reduxState[2],
+      comments: this.props.reduxState[3]
+    }
+    Axios.post(`/feedback`, feedback)
+    .then(response=>{
+    
+    })
+    .catch(error=>{
+      alert(`error sending data`);
+      console.log('error in POST', error);
+    })
     this.props.history.push('/thanks');
   }
 
@@ -13,8 +26,6 @@ class ReviewFeedback extends Component{
     return(
       <>
         <h2>Review Your Feedback</h2>
-        {JSON.stringify(this.props.reduxState)}
-
         <p>Feeling: {this.props.reduxState[0]}</p>
         <p>Understanding: {this.props.reduxState[1]}</p>
         <p>Supported: {this.props.reduxState[2]}</p>

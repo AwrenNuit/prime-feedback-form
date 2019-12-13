@@ -21,6 +21,7 @@ class FeelingForm extends Component{
       <>
         <h2>How are you feeling today?</h2>
         <p><span>Stressed</span> <span>Calm</span></p>
+        {JSON.stringify(this.props)}
         <span><input type="radio" name="feeling" id="1" value="1" checked={this.state.type === 1} onChange={(event)=>this.handleChange(event)} /></span>
         <span><input type="radio" name="feeling" id="2" value="2" checked={this.state.type === 2} onChange={(event)=>this.handleChange(event)} /></span>
         <span><input type="radio" name="feeling" id="3" value="3" checked={this.state.type === 3} onChange={(event)=>this.handleChange(event)} /></span>
