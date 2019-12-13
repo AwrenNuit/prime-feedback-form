@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 
 class Header extends Component{
 
+  nextPage = ()=>{
+    this.props.history.push(`/feeling`);
+  }
+
   render(){
     return(
       <>
@@ -11,7 +15,7 @@ class Header extends Component{
         </header>
         <h2>Take a moment to pause and think about how the day went.</h2>
         <p>When you're ready to continue press NEXT.</p>
-        <button>NEXT</button>
+        <button onClick={this.nextPage}>NEXT</button>
       </>
     )
   }

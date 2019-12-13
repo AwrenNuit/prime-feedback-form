@@ -3,14 +3,16 @@ import {connect} from 'react-redux';
 
 class CommentForm extends Component{
 
+  nextPage = ()=>{
+    this.props.history.push(`/review`);
+  }
+
   render(){
     return(
       <>
         <h2>Any additional comments?</h2>
-        <form>
-          <textarea rows="6" cols="40"></textarea>
-          <button type="submit">NEXT</button>
-        </form>
+        <textarea rows="6" cols="40"></textarea>
+        <button onClick={this.nextPage}>NEXT</button>
       </>
     )
   }
