@@ -1,5 +1,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core';
+
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit,
+  },
+});
 
 class SupportedForm extends Component{
 
@@ -22,19 +30,23 @@ class SupportedForm extends Component{
   }
 
   render(){
+    const { classes } = this.props;
     return(
       <>
-        <h2>How well are you being supported?</h2>
-        <p><span>I need help</span> <span>Got it!</span></p>
-        <span><input type="radio" name="supported" id="1" value="1" checked={this.state.support === '1'} onChange={(event)=>this.handleChange(event)} /></span>
-        <span><input type="radio" name="supported" id="2" value="2" checked={this.state.support === '2'} onChange={(event)=>this.handleChange(event)} /></span>
-        <span><input type="radio" name="supported" id="3" value="3" checked={this.state.support === '3'} onChange={(event)=>this.handleChange(event)} /></span>
-        <span><input type="radio" name="supported" id="4" value="4" checked={this.state.support === '4'} onChange={(event)=>this.handleChange(event)} /></span>
-        <span><input type="radio" name="supported" id="5" value="5" checked={this.state.support === '5'} onChange={(event)=>this.handleChange(event)} /></span>
-        <button onClick={this.nextPage}>NEXT</button>
+        <h2 className="headings">How well are you being supported?</h2>
+        <p><span className="left-scale">Abandoned</span> <span>Supported</span></p>
+        <input type="radio" name="supported" id="1" value="1" checked={this.state.support === '1'} onChange={(event)=>this.handleChange(event)} />
+        <input type="radio" name="supported" id="2" value="2" checked={this.state.support === '2'} onChange={(event)=>this.handleChange(event)} />
+        <input type="radio" name="supported" id="3" value="3" checked={this.state.support === '3'} onChange={(event)=>this.handleChange(event)} />
+        <input type="radio" name="supported" id="4" value="4" checked={this.state.support === '4'} onChange={(event)=>this.handleChange(event)} />
+        <input type="radio" name="supported" id="5" value="5" checked={this.state.support === '5'} onChange={(event)=>this.handleChange(event)} />
+        <br />
+        <Button variant="contained" color="primary" size="large" className={classes.button} onClick={this.nextPage}>
+          NEXT
+        </Button>
       </>
     )
   }
 }
 
-export default connect()(SupportedForm);
+export default withStyles(styles)(connect()(SupportedForm));

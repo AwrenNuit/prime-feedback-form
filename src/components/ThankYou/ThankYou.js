@@ -1,5 +1,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core';
+
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit,
+  },
+});
 
 class ThankYou extends Component{
 
@@ -9,18 +17,17 @@ class ThankYou extends Component{
   }
 
   render(){
+    const { classes } = this.props;
     return(
       <>
         <h1>FEEDBACK SUBMITTED!</h1>
         <h3>Thank you!</h3>
-        <button onClick={this.reset}>Leave New Feedback</button>
+        <Button variant="contained" color="primary" size="large" className={classes.button} onClick={this.reset}>
+          Leave New Feedback
+        </Button>
       </>
     )
   }
 }
 
-// const putReduxStateOnProps = (reduxState)=>({
-//   reduxState: reduxState.OBJECT
-// });
-
-export default connect()(ThankYou);
+export default withStyles(styles)(connect()(ThankYou));

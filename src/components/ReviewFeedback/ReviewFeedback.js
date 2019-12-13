@@ -1,6 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Axios from 'axios';
+import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core';
+
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit,
+  },
+});
 
 class ReviewFeedback extends Component{
 
@@ -23,14 +31,17 @@ class ReviewFeedback extends Component{
   }
 
   render(){
+    const { classes } = this.props;
     return(
       <>
-        <h2>Review Your Feedback</h2>
+        <h2 className="headings">Review Your Feedback</h2>
         <p>Feeling: {this.props.reduxState[0]}</p>
         <p>Understanding: {this.props.reduxState[1]}</p>
         <p>Supported: {this.props.reduxState[2]}</p>
         <p>Comments: {this.props.reduxState[3]}</p>
-        <button onClick={this.nextPage}>SUBMIT</button>
+        <Button variant="contained" color="primary" size="large" className={classes.button} onClick={this.nextPage}>
+          SUBMIT
+        </Button>
       </>
     )
   }
@@ -40,4 +51,4 @@ const putReduxStateOnProps = (reduxState)=>({
   reduxState: reduxState.surveyReducer
 });
 
-export default connect(putReduxStateOnProps)(ReviewFeedback);
+export default withStyles(styles)(connect(putReduxStateOnProps)(ReviewFeedback));
