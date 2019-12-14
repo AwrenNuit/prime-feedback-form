@@ -12,9 +12,10 @@ const styles = theme => ({
 
 class ReviewFeedback extends Component{
 
-
   lastPage = ()=>{
-    this.props.dispatch({type: `UNDO_LAST`});
+    if(this.props.reduxState[3]){
+      this.props.dispatch({type: `UNDO_LAST`});
+    }
     this.props.history.push(`/comments`);
   }
 

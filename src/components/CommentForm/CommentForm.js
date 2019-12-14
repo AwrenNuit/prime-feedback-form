@@ -26,7 +26,9 @@ class CommentForm extends Component{
   }
 
   nextPage = ()=>{
-    this.props.dispatch({type: `SEND_FEEDBACK`, payload: this.state.comments});
+    if(this.state.comments){
+      this.props.dispatch({type: `SEND_FEEDBACK`, payload: this.state.comments});
+    }
     this.props.history.push(`/review`);
   }
 

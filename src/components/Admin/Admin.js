@@ -20,7 +20,7 @@ const styles = theme => ({
     minWidth: 500,
   },
   thead: {
-    backgroundColor: 'rgb(255, 251, 247)',
+    backgroundColor: 'rgb(240, 236, 232)',
   },
 });
 
@@ -68,7 +68,7 @@ class Admin extends Component{
               </TableHead>
               <TableBody>
                 {this.state.feedbackList.map((item, i)=>
-                  <AdminItem item={item} i={i} getFeedback={this.getFeedback} />
+                  <AdminItem item={item} key={i} getFeedback={this.getFeedback} />
                 )}
               </TableBody>
             </Table>

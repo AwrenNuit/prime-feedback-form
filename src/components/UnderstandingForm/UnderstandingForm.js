@@ -14,7 +14,7 @@ const styles = theme => ({
 class UnderstandingForm extends Component{
 
   state = {
-    understanding: 0
+    understanding: ''
   }
 
   handleChange = (event)=>{
@@ -27,7 +27,7 @@ class UnderstandingForm extends Component{
   }
 
   nextPage = ()=>{
-    if(this.state.understanding !== 0){
+    if(this.state.understanding){
       this.props.dispatch({type: `SEND_FEEDBACK`, payload: this.state.understanding});
       this.props.history.push(`/supported`);
     }

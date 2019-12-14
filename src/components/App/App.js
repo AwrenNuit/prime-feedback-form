@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import {HashRouter as Router, Route} from 'react-router-dom';
+import 'typeface-roboto';
 import Header from '../Header/Header';
 import Welcome from '../Welcome/Welcome';
 import FeelingForm from '../FeelingForm/FeelingForm';

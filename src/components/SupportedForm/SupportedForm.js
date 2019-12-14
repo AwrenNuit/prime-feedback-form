@@ -14,7 +14,7 @@ const styles = theme => ({
 class SupportedForm extends Component{
 
   state = {
-    support: 0
+    support: ''
   }
 
   handleChange = (event)=>{
@@ -27,7 +27,7 @@ class SupportedForm extends Component{
   }
 
   nextPage = ()=>{
-    if(this.state.support !== 0){
+    if(this.state.support){
       this.props.dispatch({type: `SEND_FEEDBACK`, payload: this.state.support});
       this.props.history.push(`/comments`);
     }
