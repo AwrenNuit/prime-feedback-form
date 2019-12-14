@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
 
 const styles = theme => ({
   button: {
@@ -20,7 +21,7 @@ class CommentForm extends Component{
   }
 
   nextPage = ()=>{
-    this.props.dispatch({type: `SEND_COMMENTS`, payload: this.state.comments});
+    this.props.dispatch({type: `SEND_FEEDBACK`, payload: this.state.comments});
     this.props.history.push(`/review`);
   }
 
@@ -28,12 +29,24 @@ class CommentForm extends Component{
     const { classes } = this.props;
     return(
       <>
-        <h2 className="headings">Any additional comments?</h2>
-        <textarea rows="6" cols="40" onChange={(event)=>this.handleChange(event)} value={this.state.comments}></textarea>
-        <br />
-        <Button variant="contained" color="primary" size="large" className={classes.button} onClick={this.nextPage}>
-          NEXT
-        </Button>
+        <div className="main-div">
+          <h2>Any additional comments?</h2>
+          <TextField
+            id="outlined-multiline-flexible"
+            label="(optional)"
+            multiline
+            rows="4"
+            value={this.state.comments}
+            onChange={(event)=>this.handleChange(event)}
+            className={classes.textField}
+            margin="normal"
+            variant="outlined"
+          />
+          <br />
+          <Button variant="contained" color="primary" size="large" className={classes.button} onClick={this.nextPage}>
+            NEXT
+          </Button>
+        </div>
       </>
     )
   }

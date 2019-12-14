@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  height: 100vh;
 }
 
 .App-header {
@@ -17,15 +18,31 @@
   font-size: large;
 }
 
+.main-div {
+  height: 500px;
+  width: 90%;
+  border: 3px solid black;
+  border-radius: 10px;
+  margin: 30px;
+  background-color: white;
+  box-shadow: 5px 10px 8px #888888;
+  background-color: rgb(255, 251, 247);
+}
+
 .headings {
   margin-bottom: 50px;
 }
 
 .left-scale{
-  padding-right: 50px;
+  padding-right: 130px;
 }
 
-button {
-  margin: 20px;
+.radio-div {
+  margin-left: 30px;
+  margin-bottom: 25px;
 }
 
+.welcome-p {
+  margin-bottom: 30px;
+  margin-top: 50px;
+}

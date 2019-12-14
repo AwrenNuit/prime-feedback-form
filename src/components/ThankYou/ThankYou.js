@@ -12,7 +12,7 @@ const styles = theme => ({
 class ThankYou extends Component{
 
   reset = ()=>{
-    this.props.dispatch({type: `SEND_RESET`});
+    this.props.dispatch({type: `RESET`});
     this.props.history.push('/');
   }
 
@@ -20,11 +20,13 @@ class ThankYou extends Component{
     const { classes } = this.props;
     return(
       <>
-        <h1>FEEDBACK SUBMITTED!</h1>
-        <h3>Thank you!</h3>
-        <Button variant="contained" color="primary" size="large" className={classes.button} onClick={this.reset}>
-          Leave New Feedback
-        </Button>
+        <div className="main-div">
+          <h1>FEEDBACK SUBMITTED!</h1>
+          <h3>Thank you!</h3>
+          <Button variant="contained" color="primary" size="large" className={classes.button} onClick={this.reset}>
+            Leave New Feedback
+          </Button>
+        </div>
       </>
     )
   }

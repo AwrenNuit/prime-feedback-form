@@ -8,19 +8,10 @@ import {Provider} from 'react-redux';
 import logger from 'redux-logger';
 
 const surveyReducer = (state=[], action) => {
-  if (action.type === 'SEND_FEELINGS'){
-      return action.payload
+  if (action.type === 'SEND_FEEDBACK'){
+      return [...state, action.payload];
   }
-  else if(action.type === 'SEND_UNDERSTANDING'){
-    return [...state, action.payload];
-  }
-  else if(action.type === 'SEND_SUPPORT'){
-    return [...state, action.payload];
-  }
-  else if(action.type === 'SEND_COMMENTS'){
-    return [...state, action.payload];
-  }
-  else if(action.type === 'SEND_RESET'){
+  else if(action.type === 'RESET'){
     return [];
   }
   return state;

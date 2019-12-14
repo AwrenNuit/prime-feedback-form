@@ -17,11 +17,13 @@ class Welcome extends Component{
     const { classes } = this.props;
     return(
       <>
-        <h2>Take a moment to pause and think about how the day went.</h2>
-        <p>When you're ready to continue press NEXT.</p>
-        <Button variant="contained" color="primary" size="large" className={classes.button} onClick={this.nextPage}>
-          NEXT
-        </Button>
+        <div className="main-div">
+          <h2 className="welcome-h2">Take a moment to pause and think about how the day went.</h2>
+          <p className="welcome-p">When you're ready to continue press NEXT.</p>
+          <Button variant="contained" color="primary" size="large" className={classes.button} onClick={this.nextPage}>
+            NEXT
+          </Button>
+        </div>
       </>
     )
   }

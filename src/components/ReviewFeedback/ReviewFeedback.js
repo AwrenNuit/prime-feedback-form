@@ -34,14 +34,16 @@ class ReviewFeedback extends Component{
     const { classes } = this.props;
     return(
       <>
-        <h2 className="headings">Review Your Feedback</h2>
-        <p>Feeling: {this.props.reduxState[0]}</p>
-        <p>Understanding: {this.props.reduxState[1]}</p>
-        <p>Supported: {this.props.reduxState[2]}</p>
-        <p>Comments: {this.props.reduxState[3]}</p>
-        <Button variant="contained" color="primary" size="large" className={classes.button} onClick={this.nextPage}>
-          SUBMIT
-        </Button>
+        <div className="main-div">
+          <h2 className="headings">Review Your Feedback</h2>
+          <p>Feeling: {this.props.reduxState[0]}</p>
+          <p>Understanding: {this.props.reduxState[1]}</p>
+          <p>Supported: {this.props.reduxState[2]}</p>
+          <p>Comments: {this.props.reduxState[3]}</p>
+          <Button variant="contained" color="primary" size="large" className={classes.button} onClick={this.nextPage}>
+            SUBMIT
+          </Button>
+        </div>
       </>
     )
   }
