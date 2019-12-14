@@ -21,6 +21,11 @@ class SupportedForm extends Component{
     this.setState({support: event.target.value});
   }
 
+  lastPage = ()=>{
+    this.props.dispatch({type: `UNDO_LAST`});
+    this.props.history.push(`/understanding`);
+  }
+
   nextPage = ()=>{
     if(this.state.support !== 0){
       this.props.dispatch({type: `SEND_FEEDBACK`, payload: this.state.support});
@@ -45,6 +50,9 @@ class SupportedForm extends Component{
             <FormControlLabel control={<Radio />} className={classes.group} type="radio" name="supported" id="4" value="4" checked={this.state.support === '4'} onChange={(event)=>this.handleChange(event)} />
             <FormControlLabel control={<Radio />} className={classes.group} type="radio" name="supported" id="5" value="5" checked={this.state.support === '5'} onChange={(event)=>this.handleChange(event)} />
           </div>
+          <Button variant="contained" color="primary" size="large" className={classes.button} onClick={this.lastPage}>
+            BACK
+          </Button>
           <Button variant="contained" color="primary" size="large" className={classes.button} onClick={this.nextPage}>
             NEXT
           </Button>

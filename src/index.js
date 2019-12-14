@@ -11,6 +11,10 @@ const surveyReducer = (state=[], action) => {
   if (action.type === 'SEND_FEEDBACK'){
       return [...state, action.payload];
   }
+  else if(action.type === `UNDO_LAST`){
+    state.pop();
+    return state;
+  }
   else if(action.type === 'RESET'){
     return [];
   }

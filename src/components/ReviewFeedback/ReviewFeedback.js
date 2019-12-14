@@ -12,6 +12,12 @@ const styles = theme => ({
 
 class ReviewFeedback extends Component{
 
+
+  lastPage = ()=>{
+    this.props.dispatch({type: `UNDO_LAST`});
+    this.props.history.push(`/comments`);
+  }
+
   nextPage = ()=>{
     let feedback = {
       feeling: this.props.reduxState[0],
@@ -40,6 +46,11 @@ class ReviewFeedback extends Component{
           <p>Understanding: {this.props.reduxState[1]}</p>
           <p>Supported: {this.props.reduxState[2]}</p>
           <p>Comments: {this.props.reduxState[3]}</p>
+          <span>
+          <Button variant="contained" color="primary" size="large" className={classes.button} onClick={this.lastPage}>
+            BACK
+          </Button>
+          </span>
           <Button variant="contained" color="primary" size="large" className={classes.button} onClick={this.nextPage}>
             SUBMIT
           </Button>

@@ -21,6 +21,11 @@ class UnderstandingForm extends Component{
     this.setState({understanding: event.target.value});
   }
 
+  lastPage = ()=>{
+    this.props.dispatch({type: `UNDO_LAST`});
+    this.props.history.push(`/feeling`);
+  }
+
   nextPage = ()=>{
     if(this.state.understanding !== 0){
       this.props.dispatch({type: `SEND_FEEDBACK`, payload: this.state.understanding});
@@ -45,6 +50,9 @@ class UnderstandingForm extends Component{
             <FormControlLabel control={<Radio />} className={classes.group} type="radio" name="understanding" id="4" value="4" checked={this.state.understanding === '4'} onChange={(event)=>this.handleChange(event)} />
             <FormControlLabel control={<Radio />} className={classes.group} type="radio" name="understanding" id="5" value="5" checked={this.state.understanding === '5'} onChange={(event)=>this.handleChange(event)} />
           </div>
+          <Button variant="contained" color="primary" size="large" className={classes.button} onClick={this.lastPage}>
+            BACK
+          </Button>
           <Button variant="contained" color="primary" size="large" className={classes.button} onClick={this.nextPage}>
             NEXT
           </Button>

@@ -14,15 +14,20 @@ const styles = theme => ({
 class FeelingForm extends Component{
 
   state = {
-    feeling: 0
+    feeling: ''
   }
 
   handleChange = (event)=>{
     this.setState({feeling: event.target.value});
   }
 
+  lastPage = ()=>{
+    this.props.dispatch({type: `UNDO_LAST`});
+    this.props.history.push(`/`);
+  }
+
   nextPage = ()=>{
-    if(this.state.feeling !== 0){
+    if(this.state.feeling){
       this.props.dispatch({type: `SEND_FEEDBACK`, payload: this.state.feeling});
       this.props.history.push(`/understanding`);
     }
@@ -45,6 +50,9 @@ class FeelingForm extends Component{
             <FormControlLabel control={<Radio />} className={classes.group} type="radio" name="feeling" id="4" value="4" checked={this.state.feeling === '4'} onChange={(event)=>this.handleChange(event)} />
             <FormControlLabel control={<Radio />} className={classes.group} type="radio" name="feeling" id="5" value="5" checked={this.state.feeling === '5'} onChange={(event)=>this.handleChange(event)} />
           </div>
+          <Button variant="contained" color="primary" size="large" className={classes.button} onClick={this.lastPage}>
+            BACK
+          </Button>
           <Button variant="contained" color="primary" size="large" className={classes.button} onClick={this.nextPage}>
             NEXT
           </Button>

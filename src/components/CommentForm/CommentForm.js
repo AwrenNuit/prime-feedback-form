@@ -20,6 +20,11 @@ class CommentForm extends Component{
     this.setState({comments: event.target.value});
   }
 
+  lastPage = ()=>{
+    this.props.dispatch({type: `UNDO_LAST`});
+    this.props.history.push(`/supported`);
+  }
+
   nextPage = ()=>{
     this.props.dispatch({type: `SEND_FEEDBACK`, payload: this.state.comments});
     this.props.history.push(`/review`);
@@ -43,6 +48,9 @@ class CommentForm extends Component{
             variant="outlined"
           />
           <br />
+          <Button variant="contained" color="primary" size="large" className={classes.button} onClick={this.lastPage}>
+            BACK
+          </Button>
           <Button variant="contained" color="primary" size="large" className={classes.button} onClick={this.nextPage}>
             NEXT
           </Button>
