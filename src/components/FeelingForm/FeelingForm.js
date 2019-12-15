@@ -4,6 +4,11 @@ import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core';
 import Radio from '@material-ui/core/Radio';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
 
 const styles = theme => ({
   button: {
@@ -12,10 +17,18 @@ const styles = theme => ({
 });
 
 class FeelingForm extends Component{
-
   state = {
+    open: false,
     feeling: ''
   }
+
+  handleClickOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
 
   handleChange = (event)=>{
     this.setState({feeling: event.target.value});
@@ -32,7 +45,7 @@ class FeelingForm extends Component{
       this.props.history.push(`/understanding`);
     }
     else{
-      alert(`You forgot to select a value!`);
+      this.handleClickOpen();
     }
   }
 
@@ -56,6 +69,24 @@ class FeelingForm extends Component{
           <Button variant="contained" color="primary" size="large" className={classes.button} onClick={this.nextPage}>
             NEXT
           </Button>
+          <Dialog
+            open={this.state.open}
+            onClose={this.handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">{"You forgot to select a value!"}</DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                Please choose how you're feeling today before continuing.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={this.handleClose} variant="outlined" color="secondary" autoFocus>
+                Okay
+              </Button>
+            </DialogActions>
+          </Dialog>
         </div>
       </>
     )

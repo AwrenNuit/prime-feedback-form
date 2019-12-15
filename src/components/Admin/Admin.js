@@ -55,6 +55,7 @@ class Admin extends Component{
       <>
         <div className="admin-div">
           <Paper className={classes.root}>
+            <h2 className="table-heading">Feedback Results</h2>
             <Table className={classes.table}> 
               <TableHead className={classes.thead}>
                 <TableRow>

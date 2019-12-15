@@ -50,3 +50,7 @@
 .admin-div {
   margin: auto;
 }
+
+.table-heading {
+  text-decoration: underline;
+}
