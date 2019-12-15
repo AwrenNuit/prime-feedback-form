@@ -21,15 +21,21 @@ class ReviewFeedback extends Component{
   }
 
   // Go back one page, if a comment was made pop last value in reducer
-  lastPage = ()=>{
+  lastPage = () => {
     if(this.props.reduxState[3]){
-      this.props.dispatch({type: `UNDO_LAST`});
+      this.undoLastSubmittal();
     }
     this.props.history.push(`/comments`);
   }
 
   // POST reducer data to database, advance to next page
-  nextPage = ()=>{
+  nextPage = () => {
+    this.postFeedback();
+    this.props.history.push('/thanks');
+  }
+
+  // POST reducer data to database
+  postFeedback = () => {
     let feedback = {
       feeling: this.props.reduxState[0],
       understanding: this.props.reduxState[1],
@@ -44,7 +50,11 @@ class ReviewFeedback extends Component{
       alert(`error sending data`);
       console.log('error in POST', error);
     })
-    this.props.history.push('/thanks');
+  }
+  
+  // Undo last dispatch
+  undoLastSubmittal = () => {
+    this.props.dispatch({type: `UNDO_LAST`});
   }
 
   render(){

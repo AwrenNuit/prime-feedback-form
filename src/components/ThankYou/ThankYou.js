@@ -13,9 +13,13 @@ const styles = theme => ({
 class ThankYou extends Component{
 
   // set reducer state to empty, return to Welcome page
-  reset = ()=>{
-    this.props.dispatch({type: `RESET`});
+  returnToWelcomePage = () => {
+    this.resetReducerState();
     this.props.history.push('/');
+  }
+
+  resetReducerState = () => {
+    this.props.dispatch({type: `RESET`});
   }
 
   render(){
@@ -27,7 +31,7 @@ class ThankYou extends Component{
         <div className="main-div">
           <h1>FEEDBACK SUBMITTED!</h1>
           <h3>Thank you!</h3>
-          <Button variant="contained" color="primary" size="large" className={classes.button} onClick={this.reset}>
+          <Button variant="contained" color="primary" size="large" className={classes.button} onClick={this.returnToWelcomePage}>
             Leave New Feedback
           </Button>
         </div>

@@ -25,22 +25,32 @@ class CommentForm extends Component{
   }
 
   // Update state to selected value
-  handleChange = (event)=>{
+  handleChange = (event) => {
     this.setState({comments: event.target.value});
   }
 
   // Go back one page, pop last value in reducer
-  lastPage = ()=>{
-    this.props.dispatch({type: `UNDO_LAST`});
+  lastPage = () => {
+    this.undoLastSubmittal();
     this.props.history.push(`/supported`);
   }
 
   // Dispatch state to reducer, advance to next page
-  nextPage = ()=>{
+  nextPage = () => {
     if(this.state.comments){
-      this.props.dispatch({type: `SEND_FEEDBACK`, payload: this.state.comments});
+      this.sendCurrentSubmittal();
     }
     this.props.history.push(`/review`);
+  }
+
+  // Dispatch state to reducer
+  sendCurrentSubmittal = () => {
+    this.props.dispatch({type: `SEND_FEEDBACK`, payload: this.state.comments});
+  }
+
+  // Undo last dispatch
+  undoLastSubmittal = () => {
+    this.props.dispatch({type: `UNDO_LAST`});
   }
 
   render(){

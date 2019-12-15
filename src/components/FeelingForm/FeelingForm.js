@@ -35,25 +35,35 @@ class FeelingForm extends Component{
   };
 
   // Update state to selected value
-  handleChange = (event)=>{
+  handleChange = (event) => {
     this.setState({feeling: event.target.value});
   }
 
   // Go back one page
-  lastPage = ()=>{
-    this.props.dispatch({type: `UNDO_LAST`});
+  lastPage = () => {
+    this.undoLastSubmittal();
     this.props.history.push(`/`);
   }
 
   // Dispatch state to reducer, advance to next page
-  nextPage = ()=>{
+  nextPage = () => {
     if(this.state.feeling){
-      this.props.dispatch({type: `SEND_FEEDBACK`, payload: this.state.feeling});
+      this.sendCurrentSubmittal();
       this.props.history.push(`/understanding`);
     }
     else{
       this.handleClickOpen();
     }
+  }
+
+  // Dispatch state to reducer
+  sendCurrentSubmittal = () => {
+    this.props.dispatch({type: `SEND_FEEDBACK`, payload: this.state.feeling});
+  }
+
+  // Undo last dispatch
+  undoLastSubmittal = () => {
+    this.props.dispatch({type: `UNDO_LAST`});
   }
 
   render(){

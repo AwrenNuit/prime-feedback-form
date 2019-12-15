@@ -42,25 +42,35 @@ class SupportedForm extends Component{
   };
 
   // Update state to selected value
-  handleChange = (event)=>{
+  handleChange = (event) => {
     this.setState({support: event.target.value});
   }
 
   // Go back one page, pop last value in reducer
-  lastPage = ()=>{
-    this.props.dispatch({type: `UNDO_LAST`});
+  lastPage = () => {
+    this.undoLastSubmittal();
     this.props.history.push(`/understanding`);
   }
 
   // Dispatch state to reducer, advance to next page
-  nextPage = ()=>{
+  nextPage = () => {
     if(this.state.support){
-      this.props.dispatch({type: `SEND_FEEDBACK`, payload: this.state.support});
+      this.sendCurrentSubmittal();
       this.props.history.push(`/comments`);
     }
     else{
       this.handleClickOpen();
     }
+  }
+
+  // Dispatch state to reducer
+  sendCurrentSubmittal = () => {
+    this.props.dispatch({type: `SEND_FEEDBACK`, payload: this.state.support});
+  }
+
+  // Undo last dispatch
+  undoLastSubmittal = () => {
+    this.props.dispatch({type: `UNDO_LAST`});
   }
 
   render(){

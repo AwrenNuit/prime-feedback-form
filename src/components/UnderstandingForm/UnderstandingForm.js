@@ -42,25 +42,35 @@ class UnderstandingForm extends Component{
   };
 
   // Update state to selected value
-  handleChange = (event)=>{
+  handleChange = (event) => {
     this.setState({understanding: event.target.value});
   }
 
   // Go back one page, pop last value in reducer
-  lastPage = ()=>{
-    this.props.dispatch({type: `UNDO_LAST`});
+  lastPage = () => {
+    this.undoLastSubmittal();
     this.props.history.push(`/feeling`);
   }
 
   // Dispatch state to reducer, advance to next page
-  nextPage = ()=>{
+  nextPage = () => {
     if(this.state.understanding){
-      this.props.dispatch({type: `SEND_FEEDBACK`, payload: this.state.understanding});
+      this.sendCurrentSubmittal();
       this.props.history.push(`/supported`);
     }
     else{
       this.handleClickOpen();
     }
+  }
+
+  // Dispatch state to reducer
+  sendCurrentSubmittal = () => {
+    this.props.dispatch({type: `SEND_FEEDBACK`, payload: this.state.understanding});
+  }
+
+  // Undo last dispatch
+  undoLastSubmittal = () => {
+    this.props.dispatch({type: `UNDO_LAST`});
   }
 
   render(){

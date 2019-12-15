@@ -38,7 +38,7 @@ class AdminItem extends Component{
   }
 
   // DELETE route to remove row from database if YES clicked in confirmation dialog
-  deleteRow = ()=>{
+  deleteRow = () => {
     if(this.state.confirm === true){
       let id = this.state.id;
       Axios.delete(`/feedback/delete/${id}`)
@@ -49,9 +49,7 @@ class AdminItem extends Component{
       alert(`error deleting data`);
       console.log('error in DELETE', error);
     })
-    this.setState({
-      confirm: false
-    });
+    this.setConfirmToFalse();
     }
   }
 
@@ -85,13 +83,19 @@ class AdminItem extends Component{
   };
 
   // On mount set checked status based on database FLAGGED column
-  setChecks = () =>{
+  setChecks = () => {
     if(this.props.item.flagged === true){
       this.setState({
         checked: true,
         incomingCheck: true
       })
     }
+  }
+
+  setConfirmToFalse = () => {
+    this.setState({
+      confirm: false
+    });
   }
 
   // PUT route to update database FLAGGED status
