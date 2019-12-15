@@ -17,6 +17,7 @@ const styles = theme => ({
 });
 
 class FeelingForm extends Component{
+  
   state = {
     open: false,
     feeling: ''
