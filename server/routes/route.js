@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
 
-router.delete(`/:id`, (req, res) => {
+router.delete(`/delete/:id`, (req, res) => {
   console.log('in DELETE');
   let id = [req.params.id];
   let SQLquery = `DELETE FROM feedback WHERE id = $1;`;
@@ -18,7 +18,7 @@ router.delete(`/:id`, (req, res) => {
 
 router.get(`/`, (req, res) => {
   console.log('in GET');
-  pool.query(`SELECT * FROM feedback ORDER BY date;`)
+  pool.query(`SELECT * FROM feedback ORDER BY date ASC, id ASC;`)
   .then((result)=>{
     res.send(result.rows);
   })
@@ -39,6 +39,20 @@ router.post('/', (req, res) => {
       console.log('ERROR IN POST -------------------------------->', error)
       res.sendStatus(500);
     });
+})
+
+router.put(`/flag/:id`, (req, res) => {
+  console.log('in PUT', req.body.flag, req.params.id);
+  let id = [req.body.flag, req.params.id];
+  let SQLquery = `UPDATE feedback SET flagged = $1 WHERE id = $2;`;
+  pool.query(SQLquery, id)
+  .then((result) => {
+    res.send(200);
+  })
+  .catch((error) => {
+    console.log('ERROR IN PUT -------------------------------->', error)
+    res.sendStatus(500);
+  });
 })
 
 module.exports = router;

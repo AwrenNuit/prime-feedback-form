@@ -11,7 +11,7 @@ import Paper from '@material-ui/core/Paper';
 
 const styles = theme => ({
   root: {
-    width: '60%',
+    width: '70%',
     marginTop: theme.spacing.unit * 3,
     overflowX: 'auto',
     margin: 'auto'
@@ -37,7 +37,6 @@ class Admin extends Component{
   getFeedback = ()=>{
     Axios.get(`/feedback`)
     .then(response=>{
-      console.log('response:', response.data);
       this.setState({
         feedbackList: response.data
       })
@@ -63,7 +62,7 @@ class Admin extends Component{
                 <TableCell align="center">Comprehension</TableCell>
                 <TableCell align="center">Support</TableCell>
                 <TableCell align="center">Comments</TableCell>
-                {/* <TableCell align="center">Flagged?</TableCell> */}
+                <TableCell align="center">Flagged?</TableCell>
                 <TableCell align="center">Delete?</TableCell>
                 </TableRow>
               </TableHead>

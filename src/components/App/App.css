@@ -54,3 +54,11 @@
 .table-heading {
   text-decoration: underline;
 }
+
+.no-flag {
+  background-color: rgb(255, 251, 247);
+}
+
+.flag {
+  background-color: rgb(255, 221, 221);
+}
