@@ -9,6 +9,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+// For material-ui
 const styles = theme => ({
   root: {
     width: '70%',
@@ -30,10 +31,12 @@ class Admin extends Component{
     feedbackList: []
   }
 
+  // Run only on first mount
   componentDidMount(){
     this.getFeedback();
   }
 
+  // GET route to grab all database data for the table
   getFeedback = ()=>{
     Axios.get(`/feedback`)
     .then(response=>{
@@ -48,6 +51,7 @@ class Admin extends Component{
   }
 
   render(){
+    // For material-ui
     const { classes } = this.props;
 
     return(

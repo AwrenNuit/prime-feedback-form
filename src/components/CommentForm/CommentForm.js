@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 
+// For material-ui
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
@@ -16,15 +17,18 @@ class CommentForm extends Component{
     comments: ''
   }
 
+  // Update state to selected value
   handleChange = (event)=>{
     this.setState({comments: event.target.value});
   }
 
+  // Go back one page, pop last value in reducer
   lastPage = ()=>{
     this.props.dispatch({type: `UNDO_LAST`});
     this.props.history.push(`/supported`);
   }
 
+  // Dispatch state to reducer, advance to next page
   nextPage = ()=>{
     if(this.state.comments){
       this.props.dispatch({type: `SEND_FEEDBACK`, payload: this.state.comments});
@@ -33,7 +37,9 @@ class CommentForm extends Component{
   }
 
   render(){
+    // For material-ui
     const { classes } = this.props;
+
     return(
       <>
         <div className="main-div">

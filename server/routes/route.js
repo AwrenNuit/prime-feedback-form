@@ -42,7 +42,7 @@ router.post('/', (req, res) => {
 })
 
 router.put(`/flag/:id`, (req, res) => {
-  console.log('in PUT', req.body.flag, req.params.id);
+  console.log('in PUT');
   let id = [req.body.flag, req.params.id];
   let SQLquery = `UPDATE feedback SET flagged = $1 WHERE id = $2;`;
   pool.query(SQLquery, id)

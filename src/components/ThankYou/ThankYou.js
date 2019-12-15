@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core';
 
+// For material-ui
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
@@ -11,13 +12,16 @@ const styles = theme => ({
 
 class ThankYou extends Component{
 
+  // set reducer state to empty, return to Welcome page
   reset = ()=>{
     this.props.dispatch({type: `RESET`});
     this.props.history.push('/');
   }
 
   render(){
+    // For material-ui
     const { classes } = this.props;
+
     return(
       <>
         <div className="main-div">

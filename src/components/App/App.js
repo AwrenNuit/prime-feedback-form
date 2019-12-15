@@ -25,6 +25,7 @@ class App extends Component {
           <Route path="/comments" component={CommentForm} />
           <Route path="/review" component={ReviewFeedback} />
           <Route path="/thanks" component={ThankYou} />
+          {/* /admin only accessible by manually going there */}
           <Route path="/admin" component={Admin} />          
         </Router>
       </div>

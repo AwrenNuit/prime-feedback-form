@@ -10,6 +10,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 
+// For material-ui
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
@@ -23,23 +24,28 @@ class UnderstandingForm extends Component{
     understanding: ''
   }
 
+  // Open alert dialog if no value selected
   handleClickOpen = () => {
     this.setState({ open: true });
   };
 
+  // Close alert dialog
   handleClose = () => {
     this.setState({ open: false });
   };
 
+  // Update state to selected value
   handleChange = (event)=>{
     this.setState({understanding: event.target.value});
   }
 
+  // Go back one page, pop last value in reducer
   lastPage = ()=>{
     this.props.dispatch({type: `UNDO_LAST`});
     this.props.history.push(`/feeling`);
   }
 
+  // Dispatch state to reducer, advance to next page
   nextPage = ()=>{
     if(this.state.understanding){
       this.props.dispatch({type: `SEND_FEEDBACK`, payload: this.state.understanding});
@@ -51,7 +57,9 @@ class UnderstandingForm extends Component{
   }
 
   render(){
+    // For material-ui
     const { classes } = this.props;
+
     return(
       <>
         <div className="main-div">

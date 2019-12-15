@@ -9,6 +9,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Checkbox from '@material-ui/core/Checkbox';
 
+// For material-ui
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
@@ -25,15 +26,18 @@ class AdminItem extends Component{
     incomingCheck: false
   }
 
+  // Run only on first mount
   componentDidMount(){
     this.setChecks();
   }
 
+  // Run every time component updates
   componentDidUpdate(){
     this.deleteRow();
     this.updateFlag();
   }
 
+  // DELETE route to remove row from database if YES clicked in confirmation dialog
   deleteRow = ()=>{
     if(this.state.confirm === true){
       let id = this.state.id;
@@ -51,6 +55,7 @@ class AdminItem extends Component{
     }
   }
 
+  // Store database ID, store checkbox boolean
   handleChange = (event, id) => {
     this.setState({
       incomingCheck: event.target.checked,
@@ -58,6 +63,7 @@ class AdminItem extends Component{
     });
   };
 
+  // Store database ID, open confirmation dialog
   handleClickOpen = (id) => {
     this.setState({
       open: true,
@@ -65,10 +71,12 @@ class AdminItem extends Component{
     });
   };
 
+  // Close confirmation dialog on NO click
   handleCloseNo = () => {
     this.setState({ open: false });
   };
 
+  // Close confirmation dialog, set confirm to true if YES is clicked
   handleCloseYes = () => {
     this.setState({
       open: false,
@@ -76,6 +84,7 @@ class AdminItem extends Component{
     });
   };
 
+  // On mount set checked status based on database FLAGGED column
   setChecks = () =>{
     if(this.props.item.flagged === true){
       this.setState({
@@ -85,31 +94,32 @@ class AdminItem extends Component{
     }
   }
 
+  // PUT route to update database FLAGGED status
   updateFlag = () => {
+    // Solution to async problem: have a set value and an incoming value compare
     if(this.state.checked !== this.state.incomingCheck){
       let id = this.state.id;
       let flag = this.state.incomingCheck;
-      console.log('checked:', flag);
       Axios.put(`/feedback/flag/${id}`, {flag})
       .then(response=>{
-        console.log('response:', response.data);
         this.props.getFeedback();
       })
       .catch(error=>{
         alert(`error updating flag`);
         console.log('error in PUT', error);
       })
+      // Update set value to value that came in so next click the incoming
+      // value will not match the set value
       this.setState({checked: this.state.incomingCheck});
     }
   }
 
   render(){
+    // For material-ui
     const { classes } = this.props;
-
 
     return(
       <>
-      {JSON.stringify(this.props.item.flagged)}
         <TableRow className={this.props.item.flagged ? 'flag' : 'no-flag'}>
           <TableCell align="center">{this.props.item.feeling}</TableCell>
           <TableCell align="center">{this.props.item.understanding}</TableCell>

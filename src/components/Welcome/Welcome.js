@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
+// For material-ui
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
@@ -9,12 +10,16 @@ const styles = theme => ({
 });
 
 class Welcome extends Component{
+  
+  // onClick advance to next page
   nextPage = ()=>{
     this.props.history.push(`/feeling`);
   }
 
   render(){
+    // For material-ui
     const { classes } = this.props;
+    
     return(
       <>
         <div className="main-div">

@@ -4,6 +4,7 @@ import Axios from 'axios';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core';
 
+// For material-ui
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
@@ -12,6 +13,7 @@ const styles = theme => ({
 
 class ReviewFeedback extends Component{
 
+  // Go back one page, if a comment was made pop last value in reducer
   lastPage = ()=>{
     if(this.props.reduxState[3]){
       this.props.dispatch({type: `UNDO_LAST`});
@@ -19,6 +21,7 @@ class ReviewFeedback extends Component{
     this.props.history.push(`/comments`);
   }
 
+  // POST reducer data to database, advance to next page
   nextPage = ()=>{
     let feedback = {
       feeling: this.props.reduxState[0],
@@ -38,7 +41,9 @@ class ReviewFeedback extends Component{
   }
 
   render(){
+    // For material-ui
     const { classes } = this.props;
+
     return(
       <>
         <div className="main-div">
@@ -61,6 +66,7 @@ class ReviewFeedback extends Component{
   }
 }
 
+// Read data from reducer
 const putReduxStateOnProps = (reduxState)=>({
   reduxState: reduxState.surveyReducer
 });
