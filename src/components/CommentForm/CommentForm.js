@@ -17,6 +17,13 @@ class CommentForm extends Component{
     comments: ''
   }
 
+  // Restart survey if page is refreshed
+  componentDidMount(){
+    if(this.props.reduxState.length === 0){
+      this.props.history.push(`/`);
+    }
+  }
+
   // Update state to selected value
   handleChange = (event)=>{
     this.setState({comments: event.target.value});
@@ -68,4 +75,9 @@ class CommentForm extends Component{
   }
 }
 
-export default withStyles(styles)(connect()(CommentForm));
+// Read data from reducer
+const putReduxStateOnProps = (reduxState)=>({
+  reduxState: reduxState.surveyReducer
+});
+
+export default withStyles(styles)(connect(putReduxStateOnProps)(CommentForm));

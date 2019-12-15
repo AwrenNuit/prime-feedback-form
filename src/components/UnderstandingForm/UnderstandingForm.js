@@ -24,6 +24,13 @@ class UnderstandingForm extends Component{
     understanding: ''
   }
 
+  // Restart survey if page is refreshed
+  componentDidMount(){
+    if(this.props.reduxState.length === 0){
+      this.props.history.push(`/`);
+    }
+  }
+
   // Open alert dialog if no value selected
   handleClickOpen = () => {
     this.setState({ open: true });
@@ -102,4 +109,9 @@ class UnderstandingForm extends Component{
   }
 }
 
-export default withStyles(styles)(connect()(UnderstandingForm));
+// Read data from reducer
+const putReduxStateOnProps = (reduxState)=>({
+  reduxState: reduxState.surveyReducer
+});
+
+export default withStyles(styles)(connect(putReduxStateOnProps)(UnderstandingForm));

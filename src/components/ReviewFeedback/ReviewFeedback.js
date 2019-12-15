@@ -13,6 +13,13 @@ const styles = theme => ({
 
 class ReviewFeedback extends Component{
 
+  // Restart survey if page is refreshed
+  componentDidMount(){
+    if(this.props.reduxState.length === 0){
+      this.props.history.push(`/`);
+    }
+  }
+
   // Go back one page, if a comment was made pop last value in reducer
   lastPage = ()=>{
     if(this.props.reduxState[3]){
