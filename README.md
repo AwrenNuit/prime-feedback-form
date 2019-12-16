@@ -15,7 +15,7 @@ There is also a 'hidden' ADMIN page at /admin where the database data is rendere
 - PostgreSQL
 
 ## Future Plans
-I'm pretty satisfied with where this app is right now. However, expanding this app so an admin can set up their own survey would greatly increase its usability.
+Expanding this app so an admin can set up their own survey would greatly increase its usability. Finding a good word scale (instead of a number scale) could be beneficial to the user at the review stage. Though this app is designed with a larger screen in mind, increasing mobile-friendliness is also on the to-do list.
 
 Thank you to the staff and students at Prime Digital Academy for always pushing me to be a better engineer.
 If you have questions or concerns, please email awren.nuit@gmail.com
