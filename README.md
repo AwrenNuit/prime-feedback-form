@@ -10,7 +10,7 @@ There is also a 'hidden' ADMIN page at /admin where the database data is rendere
 To see the fully functional site, please visit: https://secret-ocean-34881.herokuapp.com/#/
 
 ## Technologies Used
-- ReactJS
+- React
 - Redux
 - Axios
 - Node.js
