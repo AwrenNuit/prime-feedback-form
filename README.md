@@ -7,6 +7,8 @@ This is a feedback survey created with React and Redux. The user goes through fo
 
 There is also a 'hidden' ADMIN page at /admin where the database data is rendered as a table with 'flagged' and 'delete columns. Checking the flagged box changes that row's background color to red, signifying it's importance. Clicking the delete button will open a confirmation dialog. If the admin says YES, then that row will be removed permanently.
 
+To see the fully functional site, please visit: https://secret-ocean-34881.herokuapp.com/#/
+
 ## Technologies Used
 - ReactJS
 - Redux
@@ -14,8 +16,16 @@ There is also a 'hidden' ADMIN page at /admin where the database data is rendere
 - Node.js
 - PostgreSQL
 
+## Installation
+- Download or clone this repository
+- Run 'npm install' from the command line
+- Copy database.sql to your database program, I recommend using Postico
+
 ## Future Plans
-Expanding this app so an admin can set up their own survey would greatly increase its usability. Finding a good word scale (instead of a number scale) could be beneficial to the user at the review stage. Though this app is designed with a larger screen in mind, increasing mobile-friendliness is also on the to-do list.
+- Allow admin to set up unique surveys
+- Replace number scale with a word scale
+- Make more mobile-friendly
 
 Thank you to the staff and students at Prime Digital Academy for always pushing me to be a better engineer.
+
 If you have questions or concerns, please email awren.nuit@gmail.com
